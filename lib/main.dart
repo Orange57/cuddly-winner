@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/all_tasks.dart';
 
 void main() {
   runApp(const ToDoList());
@@ -52,8 +51,6 @@ class _DoneWidgetState extends State<DoneWidget> {
     });
   }
 }
-
-//
 
 class ToDoList extends StatelessWidget {
 
