@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../data/tasks.dart';
 
 class Task_Preview extends StatelessWidget{
   
