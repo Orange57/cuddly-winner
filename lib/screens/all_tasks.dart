@@ -29,7 +29,7 @@ class _AllTasksState extends State<AllTasks> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Liste de tâches',
             ),
             Text(
               '$_counter',

@@ -60,7 +60,7 @@ class ToDoList extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color = Theme.of(context).primaryColor;
 
-    Widget titleSection = Container(
+    Widget oneTask = Container(
       padding: const EdgeInsets.all(32),
       child: Row(
         children: [
@@ -102,7 +102,7 @@ class ToDoList extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            titleSection,
+            oneTask,
           ],
         ),
       ),
