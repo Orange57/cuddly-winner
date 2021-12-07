@@ -23,22 +23,7 @@ class ToDoList extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AllTasks(title: 'TO-DO Application'),
+      home: const AllTasks(),
     );
-
-
-    /*return MaterialApp(
-      title: 'TO-DO Application',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('TO-DO Application'),
-        ),
-        body: ListView(
-          children: [
-            allTasks,
-          ],
-        ),
-      ),
-    );*/
   }
 }

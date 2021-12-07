@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-// second route
-class Task_Preview extends StatefulWidget {
-  const Task_Preview({Key? key, required this.title}) : super(key: key);
 
-  final String title;
-
-  @override
-  State<Task_Preview> createState() => _Task_Preview();
-}
-
-class _Task_Preview extends State<Task_Preview>{
+class Task_Preview extends StatelessWidget{
+  
   Widget oneTask = Container(
     padding: const EdgeInsets.all(32),
     child: Row(
@@ -60,6 +52,12 @@ class _Task_Preview extends State<Task_Preview>{
       ),
     );
   }
+
+  /*void getOneTask()
+  {
+    print(oneTask);
+  }*/
+  //State<Task_Preview> createState() => Task_Preview();
 }
 
 class DoneWidget extends StatefulWidget {
