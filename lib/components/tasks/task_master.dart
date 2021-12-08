@@ -3,7 +3,7 @@ import 'task_preview.dart';
 
 class Task_Manage extends StatelessWidget {
   //
-  final taskPreview = Task_Preview() ;
+  final taskPreview = Task_Preview();
 
   @override
   Widget build(BuildContext context) {

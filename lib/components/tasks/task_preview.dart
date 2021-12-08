@@ -1,46 +1,64 @@
 import 'package:flutter/material.dart';
 import '../../data/tasks.dart';
-import './task_details.dart';
 
 class Task_Preview extends StatelessWidget{
-  
-  final tasks = List<Task>.generate(
-    15, (int index) {
-    return Task(
-        id: index,
-        content: 'Name task'.toString()
-    );}
-  );
   
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TO-DO Application',
+      //title: 'TO-DO Application',
       home: Scaffold(
-        appBar: AppBar(
+        /*appBar: AppBar(
           title: const Text('TO-DO Application'),
-        ),
-        body: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: tasks.length,
-          itemBuilder: (context, index) {
-            final item = tasks[index];
-
-            return ListTile(
-              title: item.getContent(),
-              subtitle: item.getId(),
-            );
-          },
+        ),*/
+        body: ListView(
+          children: [
+            titleSection,
+          ],
         ),
       ),
     );
   }
 
-  /*void getOneTask()
-  {
-    print(oneTask);
-  }*/
-  //State<Task_Preview> createState() => Task_Preview();
+  final tasks = List<Task>.generate(
+    15, (int index) {
+    return Task(
+        id: index,
+        content: 'Name task'.toString()
+    );
+    }
+  );
+  
+  Widget titleSection = Container(
+    padding: const EdgeInsets.all(32),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*2*/
+              ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: tasks.length,
+                itemBuilder: (context, index) {
+                  final item = tasks[index];
+
+                  return ListTile(
+                    title: item.getContent(),
+                    subtitle: item.getId(),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+        /*3*/
+        const DoneWidget(),
+      ],
+    ),
+  );
 }
 
 class DoneWidget extends StatefulWidget {
@@ -67,15 +85,15 @@ class _DoneWidgetState extends State<DoneWidget> {
                 ? const Icon(Icons.check_box_outlined)
                 : const Icon(Icons.check_box_outline_blank_outlined)),
             color: Colors.green[500],
-            onPressed: ()=>{ _toggleDoneTask()},
+            onPressed: _toggleDoneTask,
           ),
         ),
-        /*SizedBox(
+        SizedBox(
           width: 18,
           child: SizedBox(
             child: Text('Validation'),
           ),
-        ),*/
+        ),
       ],
     );
   }
