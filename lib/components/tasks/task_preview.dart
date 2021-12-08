@@ -3,8 +3,19 @@ import '../../data/tasks.dart';
 
 class Task_Preview extends StatelessWidget{
   
+  final doneWidget = DoneWidget();
+
   @override
   Widget build(BuildContext context) {
+    final tasks = List<Task>.generate(
+      15, (int index) {
+      return Task(
+          id: index,
+          content: 'Name task n°'.toString() + index.toString()
+      );
+      }
+    );
+    
     return MaterialApp(
       //title: 'TO-DO Application',
       home: Scaffold(
@@ -13,23 +24,16 @@ class Task_Preview extends StatelessWidget{
         ),*/
         body: ListView(
           children: [
-            titleSection,
+            titleSection(tasks),
           ],
         ),
       ),
     );
   }
 
-  final tasks = List<Task>.generate(
-    15, (int index) {
-    return Task(
-        id: index,
-        content: 'Name task'.toString()
-    );
-    }
-  );
   
-  Widget titleSection = Container(
+  
+  Widget titleSection(List<Task> tasks) {return Container(
     padding: const EdgeInsets.all(32),
     child: Row(
       children: [
@@ -45,6 +49,8 @@ class Task_Preview extends StatelessWidget{
                 itemBuilder: (context, index) {
                   final item = tasks[index];
 
+                  //doneWidget.setTask(item);
+
                   return ListTile(
                     title: item.getContent(),
                     subtitle: item.getId(),
@@ -59,6 +65,7 @@ class Task_Preview extends StatelessWidget{
       ],
     ),
   );
+  }
 }
 
 class DoneWidget extends StatefulWidget {
@@ -69,7 +76,14 @@ class DoneWidget extends StatefulWidget {
 }
 
 class _DoneWidgetState extends State<DoneWidget> {
-  bool _isDone = true;
+  bool _isDone = false;
+  
+  var task = Task();
+
+  void setTask(Task theTask)
+  {
+    task = theTask;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,22 +102,18 @@ class _DoneWidgetState extends State<DoneWidget> {
             onPressed: _toggleDoneTask,
           ),
         ),
-        SizedBox(
-          width: 18,
-          child: SizedBox(
-            child: Text('Validation'),
-          ),
-        ),
       ],
     );
   }
 
   void _toggleDoneTask() {
     setState(() {
-      if (_isDone) {
-        _isDone = false;
-      } else {
+      if (task.checkCompleted()) {
         _isDone = true;
+        task.activateCompleted();
+      } else {
+        _isDone = false;
+        task.unactivateCompleted();
       }
     });
   }

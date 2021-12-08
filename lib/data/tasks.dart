@@ -24,4 +24,26 @@ class Task {
       content,
     );
   }
+
+  void activateCompleted()
+  {
+    completed = true;
+  }
+
+  void unactivateCompleted()
+  {
+    completed = false;
+  }
+
+  bool checkCompleted()
+  {
+    if (completed)
+    {
+      return true;
+    }
+    else 
+    {
+      return false;
+    }
+  }
 }
