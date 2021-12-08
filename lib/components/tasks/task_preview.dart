@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/tasks.dart';
+import './task_details.dart';
 
 class Task_Preview extends StatelessWidget{
   
@@ -85,7 +86,7 @@ class _DoneWidgetState extends State<DoneWidget> {
                 ? const Icon(Icons.check_box_outlined)
                 : const Icon(Icons.check_box_outline_blank_outlined)),
             color: Colors.green[500],
-            onPressed: _toggleDoneTask,
+            onPressed: ()=>{ _toggleDoneTask()},
           ),
         ),
         /*SizedBox(
