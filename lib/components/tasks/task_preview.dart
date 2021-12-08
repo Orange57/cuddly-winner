@@ -4,38 +4,12 @@ import './task_details.dart';
 
 class Task_Preview extends StatelessWidget{
   
-  Widget oneTask = Container(
-    padding: const EdgeInsets.all(32),
-    child: Row(
-      children: [
-        Expanded(
-          /*1*/
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /*2*/
-              Container(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: const Text(
-                  'Nom de la tâche',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Text(
-                'Description',
-                style: TextStyle(
-                  color: Colors.grey[500],
-                ),
-              ),
-            ],
-          ),
-        ),
-        /*3*/
-        const DoneWidget(),
-      ],
-    ),
+  final tasks = List<Task>.generate(
+    15, (int index) {
+    return Task(
+        id: index,
+        content: 'Name task'.toString()
+    );}
   );
   
   @override
@@ -46,10 +20,17 @@ class Task_Preview extends StatelessWidget{
         appBar: AppBar(
           title: const Text('TO-DO Application'),
         ),
-        body: ListView(
-          children: [
-            oneTask,
-          ],
+        body: ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: tasks.length,
+          itemBuilder: (context, index) {
+            final item = tasks[index];
+
+            return ListTile(
+              title: item.getContent(),
+              subtitle: item.getId(),
+            );
+          },
         ),
       ),
     );
